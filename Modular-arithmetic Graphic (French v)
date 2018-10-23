@@ -1,0 +1,273 @@
+''' Importation des Bbibliothèques'''
+#matplotlib pyplot pour dessiner le graphique
+import matplotlib.pyplot as plt
+#matplotlib colors pour les couleurs
+import matplotlib.colors as plc
+#numpy pour les fonctions mathématiques compliqués
+import numpy as np
+#math pour les fonctions mathématiques simples
+import math as mt
+
+####
+'''Interaction avec l'utilisateur '''
+#Acquisition des information demandés de la part de l'utilisateur
+print('\n')
+n=int(input('Donnez le module initial : ___ '))
+nb=int(input('Donnez le nombre de multiplication :  ___ '))
+rp=input('Voulez vous que ça soit coloré ou pas ? \nEcrire <<Oui>> ou <<Non>> \n__________')
+print('On effectuera le dessin de ', nb, 'modulo ',n)
+####
+
+
+
+####
+''' Le choix de la couleur'''
+if rp.upper() == 'OUI':   # en couleur
+    ###
+    '''Calcul'''
+    ##
+    #coordonnée de cercle
+    print('\n')
+    print("##Début de détermination des coordonnées du cercle ## ")
+    th=np.linspace(0,2*np.pi,1800)
+    print(th)
+    x=np.cos(th)
+    print(x)
+    y=np.sin(th)
+    print(y)
+    print("##Fin de détermination des coordonnées du cercle ## ")
+    ##
+    
+    ##
+    #coordonnées des points
+    #
+    #determination du modulo
+    print('\n')
+    print("##Début de l'implémentation du modulo ## ")
+    l=list()
+    print(l)
+    for i in range(n+1):
+        l.append(i)
+        print(l)
+    print("lllllllllllllllllllllll")
+    print("la liste finale est", l)
+    print("lllllllllllllllllllllll")
+    print("##Fin de l'implémentation du modulo ## ")
+    #
+    #
+    #determination des abscisses
+    print('\n')
+    print("##Début de détermination des abcisses des points ## ")
+    lx=list()
+    print(lx)
+    for i in range(n+1):
+        lx.append(np.cos(l[i]*2*np.pi/n))
+        print(lx)
+
+    print("xxxxxxxxxxxxxxxxxxxxxxxx")
+    print("la liste finale est", lx)
+    print("xxxxxxxxxxxxxxxxxxxxxxxx")
+    print("##Fin de détérmination des abcisses des points ## ")
+    #
+    #
+    #determination des ordonnées
+    print('\n')
+    print("##Début de détermination des ordonnées des points ## ")
+    print("yyyyyyyyyyyyyyyyyyyyyyyy")
+    ly=list()
+    print(ly)
+    for i in range(n+1):
+        ly.append(np.sin(l[i]*2*np.pi/n))
+        print(ly)
+    print("yyyyyyyyyyyyyyyyyyyyyyy")
+    print("la liste finale est", ly)
+    print("yyyyyyyyyyyyyyyyyyyyyyy")
+    print("##Fin de détérmination des ordonnées des points ## ")
+    #
+    ##
+    ###
+
+
+    ###
+    ''' Dessiner '''
+    ##
+    #effectuer le dessindu cercle
+    print('\n')
+    print("##Début du dessin du cercle ## ")
+    plt.plot(y,x, color= '#808080')
+    print("##Fin du dessin du cercle ## ")
+    ##
+
+    ##
+    #effectuer le dessin des points sur le cercle
+    print('\n')
+    print("##Début du dessin des points sur le cercles ## ")
+    plt.plot(lx,ly,'b', linestyle='', marker='.', color='#808080')
+    print("##Fin du dessin des points sur le cercles ## ")
+    ##
+
+    ##
+    #effectuer le dessin des lignes reliantes
+    print('\n')
+    print("##Début du dessin des lignes reliantes des points sur le cercle ## ")
+    for j in range(n+1):
+        lxi=[]
+        lyi=[]
+        lxi.append(lx[j])
+        lyi.append(ly[j])
+        lxi.append(lx[(j*nb) % n])
+        lyi.append(ly[(j*nb) % n])
+        plt.plot(lxi,lyi, linestyle='-', linewidth= 0.5)
+        lxi=[]
+        lyi=[]
+    print("##Fin du dessin des lignes reliantes des points sur le cercle ## ")
+    ##
+
+    ##
+    #parametre de mesure et de raffinement des axes
+    print('\n')
+    print("##Début du raffinement des axes du dessins ## ")
+    plt.ylim(-1.250,1.250)
+    plt.xlim(-1.250,1.250)
+    plt.axis("equal")
+    print("##Fin du raffinement des axes du dessins ## ")
+    ##
+    ###
+
+else:             #Sans couleur
+    ###
+    '''Calcul'''
+    ##
+    #coordonnée de cercle
+    print('\n')
+    print("##Début de détermination des coordonnées du cercle ## ")
+    th=np.linspace(0,2*np.pi,1800)
+    print(th)
+    x=np.cos(th)
+    print(x)
+    y=np.sin(th)
+    print(y)
+    print("##Fin de détermination des coordonnées du cercle ## ")
+    ##
+    
+    ##
+    #coordonnées des points
+    #
+    #determination du modulo
+    print('\n')
+    print("##Début de l'implémentation du modulo ## ")
+    l=list()
+    print(l)
+    for i in range(n+1):
+        l.append(i)
+        print(l)
+    print("lllllllllllllllllllllll")
+    print("la liste finale est", l)
+    print("lllllllllllllllllllllll")
+    print("##Fin de l'implémentation du modulo ## ")
+    #
+    #
+    #determination des abscisses
+    print('\n')
+    print("##Début de détermination des abcisses des points ## ")
+    lx=list()
+    print(lx)
+    for i in range(n+1):
+        lx.append(np.cos(l[i]*2*np.pi/n))
+        print(lx)
+
+    print("xxxxxxxxxxxxxxxxxxxxxxxx")
+    print("la liste finale est", lx)
+    print("xxxxxxxxxxxxxxxxxxxxxxxx")
+    print("##Fin de détérmination des abcisses des points ## ")
+    #
+    #
+    #determination des ordonnées
+    print('\n')
+    print("##Début de détermination des ordonnées des points ## ")
+    print("yyyyyyyyyyyyyyyyyyyyyyyy")
+    ly=list()
+    print(ly)
+    for i in range(n+1):
+        ly.append(np.sin(l[i]*2*np.pi/n))
+        print(ly)
+    print("yyyyyyyyyyyyyyyyyyyyyyy")
+    print("la liste finale est", ly)
+    print("yyyyyyyyyyyyyyyyyyyyyyy")
+    print("##Fin de détérmination des ordonnées des points ## ")
+    #
+    ##
+    ###
+
+
+    ###
+    ''' Dessiner '''
+    ##
+    #effectuer le dessindu cercle
+    print('\n')
+    print("##Début du dessin du cercle ## ")
+    plt.plot(y,x, color= '#808080')
+    print("##Fin du dessin du cercle ## ")
+    ##
+
+    ##
+    #effectuer le dessin des points sur le cercle
+    print('\n')
+    print("##Début du dessin des points sur le cercles ## ")
+    plt.plot(lx,ly,'b', linestyle='', marker='.', color='#808080')
+    print("##Fin du dessin des points sur le cercles ## ")
+    ##
+
+    ##
+    #effectuer le dessin des lignes reliantes
+    print('\n')
+    print("##Début du dessin des lignes reliantes des points sur le cercle ## ")
+    for j in range(n+1):
+        lxi=[]
+        lyi=[]
+        lxi.append(lx[j])
+        lyi.append(ly[j])
+        lxi.append(lx[(j*nb) % n])
+        lyi.append(ly[(j*nb) % n])
+        plt.plot(lxi,lyi, linestyle='-',color ='k', linewidth= 0.5)
+        lxi=[]
+        lyi=[]
+    print("##Fin du dessin des lignes reliantes des points sur le cercle ## ")
+    ##
+
+    ##
+    #parametre de mesure et de raffinement des axes
+    print('\n')
+    print("##Début du raffinement des axes du dessins ## ")
+    plt.ylim(-1.250,1.250)
+    plt.xlim(-1.250,1.250)
+    plt.axis("equal")
+    print("##Fin du raffinement des axes du dessins ## ")
+    ##
+    ###
+####
+
+
+
+####
+'''Reserve de verification '''
+print('\n')
+print("##Début de vérification ## ")
+for i in range(n-1):
+    if (((mt.fabs(lx[i+1]-lx[i])**2) + (mt.fabs(lx[i+1]-lx[i])**2))**(1/2)) == (((mt.fabs(lx[i+2]-lx[i+1])**2) + (mt.fabs(lx[i+2]-lx[i+1])**2))**(1/2)):
+        print("True")
+    else:
+        print("false")
+print("##Fin de vérification ## ")
+####
+
+
+
+####
+''' instruction d'affichage de graphique'''
+print('\n')
+print("##Début de l'affichage du dessin ## ")
+plt.show()
+print("##Fin de l'affichage du dessin ## ")
+####
+
